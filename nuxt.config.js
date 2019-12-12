@@ -1,3 +1,5 @@
+const StylelintPlugin = require('stylelint-webpack-plugin')
+
 export default {
   mode: 'spa',
   /*
@@ -46,7 +48,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://github.com/nuxt-community/stylelint-module
+    '@nuxtjs/stylelint-module'
   ],
   /*
    ** Axios module configuration
@@ -67,6 +71,27 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        /**
+         * Run Eslint on save
+         */
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+        /**
+         * Run Stylelint on save
+         */
+        config.plugins.push(
+          new StylelintPlugin({
+            files: ['**/*.vue', '**/*.scss'],
+            fix: true
+          })
+        )
+      }
+    }
   }
 }
