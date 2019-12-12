@@ -12,6 +12,7 @@
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">
           Documentation
         </a>
+
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
@@ -24,20 +25,16 @@
   </div>
 </template>
 
-<script>
+<script logo="ts">
+import { Vue, Component } from 'vue-property-decorator'
 import Logo from '~/components/Logo.vue'
 
-export default {
+@Component({
   components: {
     Logo
-  },
-  methods: {
-    sample() {
-      const hoge = 'gehoge'
-      console.info(hoge)
-    }
   }
-}
+})
+export default class IndexPage extends Vue {}
 </script>
 
 <style>
