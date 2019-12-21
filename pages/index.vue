@@ -28,7 +28,11 @@ import Logo from '~/components/Logo.vue'
   components: {
     Logo
   },
-  methods: {}
+  methods: {
+    sample() {
+      console.info('通過')
+    }
+  }
 })
 export default class IndexPage extends Vue {}
 </script>
