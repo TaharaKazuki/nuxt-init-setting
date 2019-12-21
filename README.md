@@ -1,4 +1,4 @@
-# nuxt-init-setting
+## nuxt-init-setting
 
 > sample project
 
