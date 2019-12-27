@@ -31,7 +31,6 @@ import Logo from '~/components/Logo.vue'
   methods: {
     sample() {
       console.info('通過')
-      console.info('test')
     }
   }
 })
